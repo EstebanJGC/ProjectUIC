@@ -1,7 +1,6 @@
 module ViRAL(
              clk,
              rstn,
-             seed,
              o_ready_to_rcv,
              i_base_ready,
              i_base,
@@ -21,6 +20,9 @@ module ViRAL(
     o_d:                          |--- encode of gen1 -----||--- encode of gen2 -----||--- encode of gen1 -----||
     */
 
+   // Define the seed as a parameter
+   parameter [4*BYTE-1:0] seed = 32'h12345678; // You can set your desired value here
+
    parameter  BYTE               = 8;
    parameter  Rx_rate            = 1; //-- size in bytes.
    parameter  Tx_rate            = 8; //-- size in bytes.
@@ -36,7 +38,6 @@ module ViRAL(
 
    input wire                                clk;
    input wire                                rstn;
-   input wire [4*BYTE-1:0]                   seed;
    output wire                               o_ready_to_rcv;
 
    input wire                                i_base_ready;
